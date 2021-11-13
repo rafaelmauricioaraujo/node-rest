@@ -1,10 +1,13 @@
+const Service = require("../models/service");
+
 module.exports = (app) => {
   app.get("/service", (req, res) => {
     res.send("service started. get endpoint");
   });
 
   app.post("/service", (req, res) => {
-    console.log(req.body);
-    res.send("service endpoint, post");
+    const data = req.body;
+    Service.newService(data);
+    res.send("ok");
   });
 };
